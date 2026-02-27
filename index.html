@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เว็บการให้ความรู้เรื่องโรคพยาธิใบไม้ในตับและมะเร็งท่อน้ำดี</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700;800;900&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky: #e8f7ff;
+  --sky2: #d0eeff;
+  --white: #ffffff;
+  --teal: #00c9b1;
+  --teal2: #00a896;
+  --cyan: #38d9ff;
+  --blue: #4f8ef7;
+  --blue2: #2563eb;
+  --yellow: #ffd93d;
+  --orange: #ff9f43;
+  --pink: #ff6bab;
+  --green: #6bcb77;
+  --purple: #a78bfa;
+  --dark: #1e3a5f;
+  --mid: #2d5a8e;
+  --text: #1e3a5f;
+  --text2: #4a7a9b;
+  --card-bg: rgba(255,255,255,0.85);
+  --shadow: 0 8px 32px rgba(79,142,247,0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Sarabun', sans-serif;
+  background: linear-gradient(160deg, #e8f7ff 0%, #d0eeff 40%, #f0f8ff 70%, #fff 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== BG BLOBS ===== */
+.bg-blobs {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.blob {
+  position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+.blob1 { width:400px; height:400px; background:#a8e8ff; top:-100px; left:-100px; }
+.blob2 { width:350px; height:350px; background:#b8f0e8; top:50%; right:-80px; animation-delay:-4s; }
+.blob3 { width:300px; height:300px; background:#ffe0b8; bottom:-80px; left:30%; animation-delay:-8s; }
+@keyframes drift { from{transform:translate(0,0) scale(1);} to{transform:translate(30px,20px) scale(1.05);} }
+
+/* ===== FLOATING ELEMENTS ===== */
+.floaters { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.floater {
+  position: absolute; font-size: 1.8rem; opacity: 0.25;
+  animation: float-spin linear infinite;
+}
+@keyframes float-spin {
+  0%   { transform: translateY(110vh) rotate(0deg); opacity:0; }
+  5%   { opacity:0.25; }
+  95%  { opacity:0.1; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 3px solid rgba(79,142,247,0.2);
+  padding: 0 2rem;
+  box-shadow: 0 4px 20px rgba(79,142,247,0.1);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 70px;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo-icon {
+  width:48px; height:48px;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  border-radius: 14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; box-shadow: 0 4px 16px rgba(0,201,177,0.35);
+  transition: transform 0.3s;
+}
+.nav-logo-icon:hover { transform: rotate(-10deg) scale(1.1); }
+.nav-logo-text { font-family:'Kanit',sans-serif; font-size:1rem; font-weight:700; color:var(--dark); line-height:1.2; }
+.nav-logo-text span { display:block; font-size:0.7rem; font-weight:400; color:var(--teal2); }
+.nav-links { display:flex; gap:1.5rem; list-style:none; }
+.nav-links a {
+  text-decoration:none; color:var(--text2); font-size:0.9rem; font-weight:600;
+  padding: 6px 14px; border-radius: 50px; transition: all 0.3s;
+}
+.nav-links a:hover {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white; box-shadow: 0 4px 12px rgba(0,201,177,0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== 3D CARTOON TITLE ===== */
+.hero { position:relative; z-index:1; padding:4rem 2rem 2rem; text-align:center; }
+
+.cartoon-title {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.15;
+  display: inline-block;
+  position: relative;
+  letter-spacing: 1px;
+  /* 3D rounded cartoon text effect */
+  background: linear-gradient(180deg,
+    #ffffff 0%,
+    #a8edff 30%,
+    #38d9ff 55%,
+    #00a896 80%,
+    #006d5e 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Thick outline stroke */
+  -webkit-text-stroke: 3px #006d5e;
+  /* 3D shadow layers for depth */
+  filter: drop-shadow(0 3px 0 #006d5e)
+          drop-shadow(0 6px 0 #004d45)
+          drop-shadow(0 9px 0 #003530)
+          drop-shadow(0 12px 20px rgba(0,80,70,0.4));
+  animation: title-bounce 3s ease-in-out infinite;
+}
+
+@keyframes title-bounce {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.cartoon-title-sub {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  display: block;
+  margin-top: 0.3rem;
+  background: linear-gradient(180deg,
+    #fffde0 0%,
+    #ffe74c 40%,
+    #ff9f43 75%,
+    #e07000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-stroke: 2px #b85000;
+  filter: drop-shadow(0 2px 0 #b85000)
+          drop-shadow(0 4px 0 #8a3a00)
+          drop-shadow(0 8px 15px rgba(180,80,0,0.35));
+  animation: title-bounce 3s ease-in-out infinite reverse;
+}
+
+.hero-desc {
+  max-width: 620px; margin: 1.5rem auto 0;
+  color: var(--mid); font-size: 1.1rem; line-height: 1.8;
+  background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+  border-radius: 16px; padding: 1rem 2rem;
+  border: 2px solid rgba(79,142,247,0.15);
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.star-row {
+  font-size: 2rem; margin-bottom: 1rem;
+  animation: fadeInDown 0.6s ease;
+}
+
+/* ===== TABS SECTION ===== */
+.tab-section { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:2rem 2rem 5rem; }
+
+.tabs-wrapper {
+  display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 3rem;
+}
+
+.tab-btn {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 1.2rem 2.5rem;
+  border: none; border-radius: 24px; cursor: pointer;
+  font-family: 'Kanit', sans-serif; font-size: 1.1rem; font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: white;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 8px 24px rgba(79,142,247,0.2);
+  color: var(--mid);
+  min-width: 220px;
+  border: 3px solid rgba(79,142,247,0.2);
+  overflow: hidden;
+  transform-origin: center bottom;
+}
+
+.tab-btn::after {
+  content: ''; position: absolute;
+  bottom: -6px; left: 10%; width: 80%; height: 6px;
+  background: rgba(0,0,0,0.12); border-radius: 0 0 10px 10px;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #38d9ff, #00c9b1);
+  color: white;
+  box-shadow: 0 6px 0 #006d5e, 0 12px 32px rgba(0,201,177,0.4);
+  border-color: transparent;
+  transform: translateY(-6px);
+}
+.tab-btn.active::after { background: rgba(0,100,80,0.4); }
+
+.tab-btn:hover:not(.active) {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 0 rgba(0,0,0,0.1), 0 14px 32px rgba(79,142,247,0.25);
+}
+
+.tab-icon { font-size: 2.2rem; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+.tab-btn:hover .tab-icon { transform: scale(1.3) rotate(-10deg); }
+.tab-btn.active .tab-icon { animation: wiggle 0.6s ease; }
+
+@keyframes wiggle {
+  0%,100%{transform:rotate(0);}
+  20%{transform:rotate(-15deg);}
+  40%{transform:rotate(12deg);}
+  60%{transform:rotate(-8deg);}
+  80%{transform:rotate(5deg);}
+}
+
+/* Mascot pop */
+.mascot-overlay {
+  position: fixed; inset: 0; z-index: 999; pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.mascot-pop {
+  opacity: 0; transform: scale(0) rotate(-20deg);
+  transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  text-align: center;
+}
+.mascot-pop.show { opacity:1; transform:scale(1) rotate(0deg); }
+.mascot-big { font-size: 8rem; line-height:1; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2)); animation: bounce-char 0.5s ease infinite alternate; }
+@keyframes bounce-char { from{transform:translateY(0);} to{transform:translateY(-20px);} }
+.mascot-speech {
+  background: white; border: 4px solid var(--teal);
+  border-radius: 50px; padding: 12px 28px; margin-top: 16px;
+  font-family:'Kanit',sans-serif; font-weight:700; font-size:1.1rem; color:var(--dark);
+  box-shadow: 0 8px 24px rgba(0,201,177,0.3);
+  position: relative;
+}
+.mascot-speech::before {
+  content:''; position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+  border: 8px solid transparent; border-bottom-color: var(--teal);
+}
+
+/* Tab content */
+.tab-content { display:none; animation: tabPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+.tab-content.active { display:block; }
+@keyframes tabPop {
+  from { opacity:0; transform:scale(0.94) translateY(20px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
+}
+
+/* ===== SECTION HEADING (cartoon) ===== */
+.sec-heading {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  display: inline-block;
+  background: linear-gradient(180deg, #fff 0%, #a8edff 30%, #00c9b1 60%, #006d5e 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  -webkit-text-stroke: 2px #006d5e;
+  filter: drop-shadow(0 2px 0 #006d5e) drop-shadow(0 4px 0 #003530) drop-shadow(0 6px 12px rgba(0,80,70,0.3));
+  margin-bottom: 1.5rem;
+}
+.sec-heading.yellow {
+  background: linear-gradient(180deg, #fffde0 0%, #ffe74c 40%, #ff9f43 75%, #e07000 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-stroke: 2px #8a3a00;
+  filter: drop-shadow(0 2px 0 #8a3a00) drop-shadow(0 4px 0 #5a2000) drop-shadow(0 6px 12px rgba(100,40,0,0.3));
+}
+.sec-heading.pink {
+  background: linear-gradient(180deg, #fff 0%, #ffd6eb 30%, #ff6bab 60%, #c0004a 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-stroke: 2px #8a003a;
+  filter: drop-shadow(0 2px 0 #8a003a) drop-shadow(0 4px 0 #5a0028) drop-shadow(0 6px 12px rgba(100,0,60,0.3));
+}
+
+/* ===== ACCORDION CARDS ===== */
+.accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.acc-card {
+  background: white;
+  border-radius: 24px;
+  border: 3px solid rgba(79,142,247,0.15);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.07), var(--shadow);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  cursor: pointer;
+}
+.acc-card:hover { transform: translateY(-4px) scale(1.02); }
+
+.acc-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 1.4rem 1.6rem;
+  font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 1.05rem;
+  color: white; position: relative; user-select: none;
+}
+.acc-header .acc-icon { font-size: 2rem; flex-shrink:0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+.acc-card.open .acc-icon { transform: rotate(360deg) scale(1.2); }
+.acc-arrow {
+  margin-left: auto; font-size: 1rem; font-weight: 900;
+  transition: transform 0.35s ease;
+}
+.acc-card.open .acc-arrow { transform: rotate(180deg); }
+
+.acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  padding: 0 1.6rem;
+  background: white;
+  color: var(--text2); font-size: 0.95rem; line-height: 1.8;
+}
+.acc-card.open .acc-body { max-height: 600px; padding: 1.2rem 1.6rem 1.6rem; }
+
+/* Color themes for cards */
+.acc-c1 .acc-header { background: linear-gradient(135deg, #38d9ff, #00c9b1); box-shadow: 0 4px 0 #00a896 inset; }
+.acc-c2 .acc-header { background: linear-gradient(135deg, #ffd93d, #ff9f43); box-shadow: 0 4px 0 #d97000 inset; }
+.acc-c3 .acc-header { background: linear-gradient(135deg, #ff6bab, #e040fb); box-shadow: 0 4px 0 #9c0080 inset; }
+.acc-c4 .acc-header { background: linear-gradient(135deg, #6bcb77, #00c9b1); box-shadow: 0 4px 0 #008a70 inset; }
+.acc-c5 .acc-header { background: linear-gradient(135deg, #4f8ef7, #a78bfa); box-shadow: 0 4px 0 #3a50c0 inset; }
+.acc-c6 .acc-header { background: linear-gradient(135deg, #ff9f43, #ff6b6b); box-shadow: 0 4px 0 #c03030 inset; }
+
+.acc-list { list-style: none; margin-top: 0.8rem; }
+.acc-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 0.6rem; padding: 0.5rem 0.8rem;
+  background: rgba(0,201,177,0.05); border-radius: 10px;
+  border-left: 3px solid var(--teal);
+}
+.acc-list li::before { content:'⭐'; font-size:0.75rem; margin-top:3px; flex-shrink:0; }
+
+/* ===== LIFECYCLE WHEEL ===== */
+.lifecycle-section {
+  background: white; border-radius: 28px;
+  border: 3px solid rgba(0,201,177,0.2);
+  box-shadow: 0 8px 0 rgba(0,100,80,0.08), var(--shadow);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  overflow: hidden; position: relative;
+}
+
+.wheel-container {
+  position: relative;
+  width: 520px; height: 520px;
+  margin: 2rem auto;
+}
+
+.wheel-svg {
+  width: 100%; height: 100%;
+  animation: spin-slow 30s linear infinite;
+}
+@keyframes spin-slow { from{transform:rotate(0);} to{transform:rotate(360deg);} }
+.wheel-svg:hover { animation-play-state: paused; }
+
+.wheel-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px; height: 130px;
+  background: linear-gradient(135deg, #38d9ff, #00c9b1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  border: 5px solid white;
+  box-shadow: 0 8px 32px rgba(0,201,177,0.4);
+  animation: center-pulse 2s ease-in-out infinite;
+  cursor: default;
+  z-index: 5;
+}
+@keyframes center-pulse {
+  0%,100%{box-shadow:0 8px 32px rgba(0,201,177,0.4), 0 0 0 0 rgba(0,201,177,0.4);}
+  50%{box-shadow:0 8px 32px rgba(0,201,177,0.6), 0 0 0 20px rgba(0,201,177,0);}
+}
+.wheel-center-icon { font-size: 3rem; line-height:1; }
+.wheel-center-text { font-family:'Kanit',sans-serif; font-weight:700; font-size:0.8rem; color:white; margin-top:4px; }
+
+.stage-node {
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  border: 4px solid white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  z-index: 4;
+}
+.stage-node:hover { transform: scale(1.25); z-index:10; }
+.stage-node .node-icon { font-size:2rem; line-height:1; }
+.stage-node .node-name { font-family:'Kanit',sans-serif; font-weight:700; font-size:0.62rem; color:white; text-align:center; line-height:1.2; margin-top:2px; }
+
+.stage-tooltip {
+  position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+  background: var(--dark); color: white;
+  border-radius: 12px; padding: 10px 14px;
+  font-size: 0.82rem; white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s; z-index: 20;
+  font-family:'Sarabun',sans-serif;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.stage-tooltip::after {
+  content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  border:6px solid transparent; border-top-color: var(--dark);
+}
+.stage-node:hover .stage-tooltip { opacity:1; }
+
+/* Node positions (centered at 260,260 radius 180) */
+.n0  { top: calc(50% - 45px - 185px); left: calc(50% - 45px); background: linear-gradient(135deg,#38d9ff,#00c9b1); }
+.n1  { top: calc(50% - 45px - 130px); left: calc(50% - 45px + 130px); background: linear-gradient(135deg,#ffd93d,#ff9f43); }
+.n2  { top: calc(50% - 45px + 10px); left: calc(50% - 45px + 185px); background: linear-gradient(135deg,#6bcb77,#00a896); }
+.n3  { top: calc(50% - 45px + 130px); left: calc(50% - 45px + 130px); background: linear-gradient(135deg,#4f8ef7,#a78bfa); }
+.n4  { top: calc(50% - 45px + 185px); left: calc(50% - 45px); background: linear-gradient(135deg,#ff6bab,#e040fb); }
+.n5  { top: calc(50% - 45px + 130px); left: calc(50% - 45px - 130px); background: linear-gradient(135deg,#ff9f43,#ff6b6b); }
+.n6  { top: calc(50% - 45px + 10px); left: calc(50% - 45px - 185px); background: linear-gradient(135deg,#ff6b6b,#ff9f43); }
+.n7  { top: calc(50% - 45px - 130px); left: calc(50% - 45px - 130px); background: linear-gradient(135deg,#a78bfa,#4f8ef7); }
+
+.wheel-hint { color: var(--text2); font-size:0.88rem; margin-top:1rem; }
+
+/* ===== RISK ASSESSMENT ===== */
+.quiz-container {
+  max-width: 650px; margin: 0 auto;
+  background: white; border-radius: 28px;
+  border: 3px solid rgba(79,142,247,0.2);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.08), var(--shadow);
+  padding: 2.5rem;
+  overflow: hidden;
+}
+
+.quiz-header { text-align: center; margin-bottom: 2rem; }
+
+.progress-track {
+  background: var(--sky2); border-radius: 50px; height: 14px;
+  margin-bottom: 0.5rem; overflow: hidden;
+  border: 2px solid rgba(79,142,247,0.2);
+}
+.progress-fill {
+  height: 100%; border-radius: 50px;
+  background: linear-gradient(90deg, var(--teal), var(--blue));
+  transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 2px 8px rgba(0,201,177,0.4);
+}
+.progress-label {
+  text-align: center; font-family:'Kanit',sans-serif; font-weight:600;
+  font-size:0.85rem; color:var(--text2); margin-bottom:1.5rem;
+}
+
+.q-slide {
+  display: none; animation: slideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.q-slide.active { display: block; }
+@keyframes slideIn {
+  from { opacity:0; transform: translateX(60px) scale(0.95); }
+  to   { opacity:1; transform: translateX(0) scale(1); }
+}
+@keyframes slideOut {
+  from { opacity:1; transform: translateX(0) scale(1); }
+  to   { opacity:0; transform: translateX(-60px) scale(0.95); }
+}
+.q-slide.leaving { animation: slideOut 0.35s ease forwards; }
+
+.q-mascot { font-size: 4rem; text-align: center; margin-bottom: 1rem; animation: q-bounce 1s ease infinite alternate; }
+@keyframes q-bounce { from{transform:translateY(0);} to{transform:translateY(-10px);} }
+
+.q-num-badge {
+  display: inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px;
+  background: linear-gradient(135deg,var(--teal),var(--blue));
+  color:white; border-radius:50%; font-family:'Kanit',sans-serif;
+  font-weight:800; font-size:1rem; margin-right:10px;
+  box-shadow: 0 3px 0 #006d5e, 0 4px 12px rgba(0,201,177,0.3);
+  flex-shrink:0;
+}
+.q-text {
+  display: flex; align-items: flex-start; gap: 0;
+  font-family:'Kanit',sans-serif; font-size:1.1rem; font-weight:600;
+  color: var(--dark); margin-bottom: 1.5rem; line-height: 1.5;
+}
+
+.q-options { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.q-opt {
+  display: flex; align-items: center; gap: 14px;
+  padding: 1rem 1.4rem;
+  border-radius: 18px; border: 3px solid rgba(79,142,247,0.15);
+  cursor: pointer; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  background: var(--sky); font-family:'Kanit',sans-serif; font-weight:600;
+  color: var(--dark); font-size: 0.97rem; position: relative; overflow: hidden;
+}
+.q-opt:hover {
+  border-color: var(--teal); background: #e0f9f6;
+  transform: translateX(6px) scale(1.02);
+  box-shadow: -4px 0 0 var(--teal), var(--shadow);
+}
+.q-opt.selected {
+  background: linear-gradient(135deg, rgba(0,201,177,0.15), rgba(79,142,247,0.15));
+  border-color: var(--teal); color: var(--teal2);
+  box-shadow: 0 4px 16px rgba(0,201,177,0.25);
+  transform: translateX(4px);
+}
+.q-opt .opt-emoji { font-size: 1.5rem; flex-shrink:0; }
+.q-opt input { display: none; }
+
+.q-nav {
+  display: flex; gap: 1rem; margin-top: 2rem;
+}
+.btn-next, .btn-prev {
+  flex: 1; padding: 1rem;
+  border: none; border-radius: 16px; cursor: pointer;
+  font-family:'Kanit',sans-serif; font-size:1rem; font-weight:700;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.btn-next {
+  background: linear-gradient(135deg,var(--teal),var(--blue));
+  color: white;
+  box-shadow: 0 5px 0 #006d5e, 0 8px 20px rgba(0,201,177,0.3);
+}
+.btn-next:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #006d5e, 0 12px 28px rgba(0,201,177,0.4); }
+.btn-next:active { transform: translateY(2px); box-shadow: 0 2px 0 #006d5e; }
+.btn-prev {
+  background: white; color: var(--text2);
+  box-shadow: 0 5px 0 rgba(0,0,0,0.08), var(--shadow);
+  border: 3px solid rgba(79,142,247,0.15);
+}
+.btn-prev:hover { transform: translateY(-3px); background: var(--sky); }
+.btn-prev:disabled { opacity:0.4; cursor:default; transform:none; }
+
+/* Result */
+.result-panel {
+  display: none; text-align: center;
+  animation: resultPop 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.result-panel.show { display: block; }
+@keyframes resultPop { from{opacity:0;transform:scale(0.7);} to{opacity:1;transform:scale(1);} }
+
+.result-mascot { font-size: 6rem; margin-bottom: 0.5rem; animation: result-float 1.5s ease infinite alternate; }
+@keyframes result-float { from{transform:translateY(0) rotate(-5deg);} to{transform:translateY(-15px) rotate(5deg);} }
+
+.result-level-text {
+  font-family: 'Kanit', sans-serif; font-weight: 900; font-size: 2rem;
+  display: block; margin-bottom: 0.5rem;
+}
+.result-level-text.low {
+  background: linear-gradient(180deg,#b8ffed,#6bcb77,#278a40);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  -webkit-text-stroke: 2px #1a5a28;
+  filter: drop-shadow(0 2px 0 #1a5a28) drop-shadow(0 4px 8px rgba(0,80,30,0.3));
+}
+.result-level-text.medium {
+  background: linear-gradient(180deg,#fffde0,#ffe74c,#ff9f43,#c05000);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  -webkit-text-stroke: 2px #8a3a00;
+  filter: drop-shadow(0 2px 0 #8a3a00) drop-shadow(0 4px 8px rgba(100,40,0,0.3));
+}
+.result-level-text.high {
+  background: linear-gradient(180deg,#ffd6d6,#ff6b6b,#d00000);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  -webkit-text-stroke: 2px #8a0000;
+  filter: drop-shadow(0 2px 0 #8a0000) drop-shadow(0 4px 8px rgba(100,0,0,0.3));
+}
+
+.result-bar-wrap {
+  background: var(--sky2); border-radius:50px; height:20px;
+  margin: 1.2rem 0; overflow:hidden;
+  border: 3px solid rgba(79,142,247,0.15);
+}
+.result-bar {
+  height:100%; border-radius:50px; width:0;
+  transition: width 1.5s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: inset 0 3px 0 rgba(255,255,255,0.4);
+}
+.result-bar.low { background: linear-gradient(90deg,#6bcb77,#00c9b1); }
+.result-bar.medium { background: linear-gradient(90deg,#ffd93d,#ff9f43); }
+.result-bar.high { background: linear-gradient(90deg,#ff9f43,#ff6b6b); }
+
+.result-desc {
+  background: var(--sky); border-radius:16px; padding:1.2rem 1.5rem;
+  color: var(--text2); line-height:1.8; font-size:0.95rem;
+  border: 2px solid rgba(79,142,247,0.1); margin: 1rem 0;
+}
+
+.retry-btn {
+  display: inline-flex; align-items:center; gap:8px;
+  padding: 0.8rem 2rem; border:none; border-radius:50px; cursor:pointer;
+  background: linear-gradient(135deg,var(--yellow),var(--orange));
+  color:white; font-family:'Kanit',sans-serif; font-weight:700; font-size:1rem;
+  box-shadow: 0 5px 0 #8a3a00, 0 8px 20px rgba(200,100,0,0.3);
+  transition: all 0.3s;
+}
+.retry-btn:hover { transform:translateY(-3px); box-shadow: 0 8px 0 #8a3a00, 0 12px 28px rgba(200,100,0,0.4); }
+
+/* Info Band */
+.info-band {
+  background: linear-gradient(135deg,rgba(56,217,255,0.1),rgba(79,142,247,0.1));
+  border: 3px solid rgba(56,217,255,0.25); border-radius:20px;
+  padding:1.5rem 2rem; margin-bottom:2rem;
+  display:flex; gap:1rem; align-items:center;
+}
+.info-band .band-icon { font-size:2.5rem; flex-shrink:0; }
+.info-band h3 { font-family:'Kanit',sans-serif; font-weight:700; font-size:1.1rem; color:var(--dark); margin-bottom:4px; }
+.info-band p { color:var(--text2); font-size:0.9rem; line-height:1.7; }
+
+/* ===== SCROLL QUIZ ===== */
+.sq-item {
+  background: var(--sky);
+  border: 3px solid rgba(79,142,247,0.15);
+  border-radius: 20px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.1rem;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.sq-item.answered {
+  border-color: var(--teal);
+  background: #e8fff9;
+  box-shadow: 0 4px 16px rgba(0,201,177,0.15);
+}
+.sq-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1rem;
+}
+.sq-emoji { font-size: 1.5rem; flex-shrink: 0; }
+.sq-text {
+  font-family: 'Kanit', sans-serif; font-weight: 600;
+  font-size: 1rem; color: var(--dark); line-height: 1.5; flex: 1;
+}
+.sq-opts {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.sq-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0.75rem 1.4rem;
+  border-radius: 50px; border: 2.5px solid rgba(79,142,247,0.2);
+  cursor: pointer; font-family: 'Kanit', sans-serif; font-weight: 600;
+  font-size: 0.97rem; color: var(--mid);
+  background: white; transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  user-select: none; flex: 1; min-width: 120px; justify-content: center;
+}
+.sq-opt input { display: none; }
+.sq-opt:hover {
+  border-color: var(--teal); background: rgba(0,201,177,0.08);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,201,177,0.2);
+}
+.sq-opt.selected {
+  border-color: var(--teal);
+  background: linear-gradient(135deg,rgba(0,201,177,0.18),rgba(79,142,247,0.12));
+  color: var(--teal2);
+  box-shadow: 0 4px 16px rgba(0,201,177,0.25), 0 0 0 3px rgba(0,201,177,0.12);
+  transform: scale(1.03);
+}
+
+.sq-counter {
+  text-align: center; font-family: 'Kanit', sans-serif;
+  font-weight: 600; font-size: 1rem;
+  color: var(--text2); margin: 1.2rem 0 0.6rem;
+}
+.sq-counter span { color: var(--teal2); font-size: 1.3rem; font-weight: 800; }
+
+.assess-submit-btn {
+  width: 100%; padding: 1.15rem;
+  border: none; border-radius: 18px; cursor: pointer;
+  font-family: 'Kanit', sans-serif; font-size: 1.15rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white;
+  box-shadow: 0 6px 0 #006d5e, 0 10px 28px rgba(0,201,177,0.35);
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  margin-bottom: 1.5rem; position: relative; overflow: hidden;
+}
+.assess-submit-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+  transform: translateX(-100%); transition: transform 0.6s;
+}
+.assess-submit-btn:hover:not(:disabled)::before { transform: translateX(100%); }
+.assess-submit-btn:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 #006d5e, 0 16px 36px rgba(0,201,177,0.45);
+}
+.assess-submit-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #006d5e, 0 4px 12px rgba(0,201,177,0.25);
+}
+.assess-submit-btn:disabled {
+  background: linear-gradient(135deg, #b0d4d0, #b0c4e8);
+  box-shadow: 0 4px 0 #7aa0a0, 0 6px 16px rgba(0,0,0,0.08);
+  cursor: not-allowed; color: rgba(255,255,255,0.7);
+}
+
+/* ===== TEAM SECTION ===== */
+.team-section {
+  position: relative; z-index: 1;
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(220,245,255,0.6) 100%);
+}
+.team-inner { max-width: 1000px; margin: 0 auto; }
+
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.team-card {
+  background: white; border-radius: 28px;
+  border: 3px solid rgba(79,142,247,0.15);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.07), 0 12px 36px rgba(79,142,247,0.12);
+  padding: 2.2rem 1.8rem; text-align: center;
+  position: relative; overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.team-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--teal), var(--blue), var(--pink));
+}
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 18px 0 rgba(0,0,0,0.07), 0 24px 48px rgba(79,142,247,0.2);
+  border-color: rgba(0,201,177,0.35);
+}
+
+.team-avatar {
+  font-size: 5rem; line-height: 1;
+  margin-bottom: 0.5rem;
+  display: block;
+  animation: avatar-float 3s ease-in-out infinite alternate;
+}
+.team-card:nth-child(2) .team-avatar { animation-delay: -1s; }
+.team-card:nth-child(3) .team-avatar { animation-delay: -2s; }
+@keyframes avatar-float {
+  from { transform: translateY(0) rotate(-3deg); }
+  to   { transform: translateY(-8px) rotate(3deg); }
+}
+
+.team-num {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white; font-family: 'Kanit', sans-serif;
+  font-weight: 800; font-size: 0.8rem; padding: 3px 14px;
+  border-radius: 50px; margin-bottom: 0.8rem;
+  box-shadow: 0 3px 8px rgba(0,201,177,0.3);
+}
+
+.team-name {
+  font-family: 'Kanit', sans-serif; font-weight: 700;
+  font-size: 1.2rem; color: var(--dark);
+  margin-bottom: 0.8rem; line-height: 1.3;
+}
+
+.team-school {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  color: var(--text2); font-size: 0.88rem;
+  background: var(--sky); border-radius: 12px;
+  padding: 0.5rem 0.8rem; margin-bottom: 1.2rem;
+  border: 2px solid rgba(79,142,247,0.12); line-height: 1.5;
+}
+.team-school-icon { font-size: 1rem; flex-shrink: 0; }
+
+.team-contacts {
+  display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+}
+.team-contact-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0.55rem 1.1rem; border-radius: 50px;
+  font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 0.85rem;
+  text-decoration: none; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  border: 2px solid;
+}
+.team-contact-btn.teal {
+  background: rgba(0,201,177,0.1); color: var(--teal2);
+  border-color: rgba(0,201,177,0.35);
+}
+.team-contact-btn.blue {
+  background: rgba(79,142,247,0.1); color: var(--blue2);
+  border-color: rgba(79,142,247,0.3);
+}
+.team-contact-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.team-contact-btn.teal:hover { background: rgba(0,201,177,0.2); }
+.team-contact-btn.blue:hover  { background: rgba(79,142,247,0.2); }
+
+@media(max-width:768px){
+  .team-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .sq-opts { flex-direction: column; }
+}
+
+/* ===== CANCER SECTION ===== */
+.cancer-section {
+  margin-bottom: 2.5rem;
+}
+.cancer-link-box {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(255,159,67,0.08));
+  border: 3px solid rgba(255,107,107,0.25);
+  border-radius: 20px; padding: 1.5rem 2rem; margin-bottom: 1.8rem;
+}
+.cancer-link-icon { font-size: 2.2rem; flex-shrink: 0; margin-top: 2px; }
+.cancer-link-box h3 {
+  font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 1.05rem;
+  color: var(--dark); margin-bottom: 0.5rem;
+}
+.cancer-link-box p { color: var(--text2); font-size: 0.92rem; line-height: 1.7; }
+
+.cancer-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem; margin-bottom: 1.8rem;
+}
+.cancer-card {
+  background: white; border-radius: 22px;
+  border: 3px solid rgba(255,107,107,0.15);
+  box-shadow: 0 5px 0 rgba(200,50,50,0.07), 0 8px 24px rgba(255,107,107,0.08);
+  padding: 1.4rem 1.6rem;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cancer-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 0 rgba(200,50,50,0.1), 0 16px 36px rgba(255,107,107,0.15);
+  border-color: rgba(255,107,107,0.35);
+}
+.cc-top {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;
+}
+.cc-icon { font-size: 1.8rem; flex-shrink: 0; }
+.cancer-card h4 {
+  font-family: 'Kanit', sans-serif; font-weight: 700;
+  font-size: 1rem; color: var(--dark);
+}
+.cc-1 { border-color: rgba(255,107,107,0.25); }
+.cc-1 .cc-top { border-bottom: 2px solid rgba(255,107,107,0.12); padding-bottom: 0.8rem; }
+.cc-2 { border-color: rgba(255,159,67,0.25); }
+.cc-2 .cc-top { border-bottom: 2px solid rgba(255,159,67,0.12); padding-bottom: 0.8rem; }
+.cc-3 { border-color: rgba(255,107,171,0.25); }
+.cc-3 .cc-top { border-bottom: 2px solid rgba(255,107,171,0.12); padding-bottom: 0.8rem; }
+.cc-4 { border-color: rgba(79,142,247,0.25); }
+.cc-4 .cc-top { border-bottom: 2px solid rgba(79,142,247,0.12); padding-bottom: 0.8rem; }
+.cc-5 { border-color: rgba(0,201,177,0.25); }
+.cc-5 .cc-top { border-bottom: 2px solid rgba(0,201,177,0.12); padding-bottom: 0.8rem; }
+.cc-6 { border-color: rgba(167,139,250,0.25); }
+.cc-6 .cc-top { border-bottom: 2px solid rgba(167,139,250,0.12); padding-bottom: 0.8rem; }
+
+.cancer-cta {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,159,67,0.1));
+  border: 3px solid rgba(255,107,107,0.3);
+  border-radius: 20px; padding: 1.5rem 2rem;
+  box-shadow: 0 4px 0 rgba(200,50,50,0.1), 0 8px 24px rgba(255,107,107,0.1);
+}
+.cta-icon { font-size: 2.5rem; flex-shrink: 0; animation: cta-bounce 1s ease infinite alternate; }
+@keyframes cta-bounce { from{transform:translateY(0);} to{transform:translateY(-6px);} }
+.cancer-cta strong {
+  display: block; font-family: 'Kanit', sans-serif; font-weight: 800;
+  font-size: 1.05rem; color: var(--dark); margin-bottom: 0.4rem;
+}
+.cancer-cta p { color: var(--text2); font-size: 0.9rem; line-height: 1.7; }
+
+/* Cancer accordion color themes */
+.acc-cancer-1 .acc-header { background: linear-gradient(135deg, #ff6b6b, #ee5a24); box-shadow: 0 4px 0 #b71c1c inset; }
+.acc-cancer-2 .acc-header { background: linear-gradient(135deg, #ff9f43, #e55039); box-shadow: 0 4px 0 #8e1a0a inset; }
+.acc-cancer-3 .acc-header { background: linear-gradient(135deg, #ff6bab, #e040fb); box-shadow: 0 4px 0 #6a0080 inset; }
+.acc-cancer-4 .acc-header { background: linear-gradient(135deg, #4f8ef7, #2563eb); box-shadow: 0 4px 0 #1a3a9c inset; }
+.acc-cancer-5 .acc-header { background: linear-gradient(135deg, #00c9b1, #6bcb77); box-shadow: 0 4px 0 #006d5e inset; }
+.acc-cancer-6 .acc-header { background: linear-gradient(135deg, #a78bfa, #818cf8); box-shadow: 0 4px 0 #4c1d95 inset; }
+
+/* ===== PROFILE CARD CAROUSEL ===== */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.carousel-track-outer {
+  flex: 1;
+  overflow: hidden;
+  padding: 2.5rem 0 2rem;
+}
+.carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  transition: transform 0.55s cubic-bezier(0.34, 1.20, 0.64, 1);
+  will-change: transform;
+}
+
+.profile-card {
+  flex: 0 0 320px;
+  background: white;
+  border-radius: 28px;
+  border: 3px solid rgba(79,142,247,0.15);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.08), 0 14px 40px rgba(79,142,247,0.12);
+  overflow: hidden;
+  transition: all 0.55s cubic-bezier(0.34, 1.20, 0.64, 1);
+  transform: scale(0.80);
+  opacity: 0.45;
+  filter: blur(1.5px);
+  cursor: pointer;
+  margin: 0 18px;
+  position: relative;
+}
+.profile-card.active {
+  transform: scale(1.0);
+  opacity: 1;
+  filter: none;
+  box-shadow: 0 12px 0 rgba(0,100,80,0.12), 0 20px 56px rgba(0,201,177,0.22);
+  border-color: rgba(0,201,177,0.4);
+  z-index: 2;
+}
+
+/* Photo area */
+.pc-photo-wrap {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, #e0f4ff 0%, #c8edff 50%, #d8f5f0 100%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.pc-photo-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.8) 100%);
+}
+.pc-photo-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.pc-photo-icon { font-size: 5rem; line-height: 1; opacity: 0.55; }
+.pc-photo-hint {
+  font-family: 'Kanit', sans-serif; font-size: 0.78rem;
+  color: var(--text2); opacity: 0.7;
+  background: rgba(255,255,255,0.8);
+  border: 1.5px dashed rgba(79,142,247,0.35);
+  border-radius: 50px; padding: 3px 14px;
+}
+
+/* Photo (actual img tag when user adds one) */
+.pc-photo-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  position: absolute; inset: 0;
+}
+
+.pc-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white; font-family: 'Kanit', sans-serif;
+  font-weight: 800; font-size: 0.85rem;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,201,177,0.4);
+  border: 3px solid white;
+  z-index: 3;
+}
+
+/* Card body */
+.pc-body {
+  padding: 1.5rem 1.6rem 1.8rem;
+  text-align: center;
+}
+.pc-name {
+  font-family: 'Kanit', sans-serif; font-weight: 800;
+  font-size: 1.25rem; color: var(--dark);
+  margin-bottom: 0.6rem;
+}
+.pc-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,201,177,0.12), rgba(79,142,247,0.12));
+  border: 2px solid rgba(0,201,177,0.3);
+  color: var(--teal2); font-family: 'Kanit', sans-serif;
+  font-weight: 600; font-size: 0.82rem;
+  border-radius: 50px; padding: 4px 16px;
+  margin-bottom: 0.9rem;
+}
+.pc-school {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: var(--sky); border-radius: 12px;
+  padding: 0.55rem 1rem; margin-bottom: 1.2rem;
+  color: var(--text2); font-size: 0.88rem; line-height: 1.5;
+  border: 2px solid rgba(79,142,247,0.1);
+  font-family: 'Sarabun', sans-serif;
+}
+.pc-contacts {
+  display: flex; gap: 0.6rem; justify-content: center;
+}
+.pc-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0.55rem 1.1rem; border-radius: 50px;
+  font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 0.85rem;
+  text-decoration: none; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  border: 2px solid;
+}
+.pc-teal {
+  background: rgba(0,201,177,0.1); color: var(--teal2);
+  border-color: rgba(0,201,177,0.35);
+}
+.pc-blue {
+  background: rgba(79,142,247,0.1); color: var(--blue2);
+  border-color: rgba(79,142,247,0.3);
+}
+.pc-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.pc-teal:hover { background: rgba(0,201,177,0.2); }
+.pc-blue:hover  { background: rgba(79,142,247,0.2); }
+
+/* Carousel nav buttons */
+.car-btn {
+  width: 52px; height: 52px; border-radius: 50%; border: none;
+  background: white;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.08), 0 8px 24px rgba(79,142,247,0.18);
+  border: 2.5px solid rgba(79,142,247,0.18);
+  font-size: 1.8rem; line-height: 1; color: var(--teal2);
+  cursor: pointer; flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 5;
+}
+.car-btn:hover {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white; transform: scale(1.12);
+  box-shadow: 0 7px 0 #006d5e, 0 12px 28px rgba(0,201,177,0.35);
+  border-color: transparent;
+}
+
+/* Pagination dots */
+.car-dots {
+  display: flex; justify-content: center; gap: 12px;
+  margin-top: 1rem;
+}
+.car-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(79,142,247,0.2); cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  border: 2px solid transparent;
+}
+.car-dot.active {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  transform: scale(1.4);
+  border-color: rgba(0,201,177,0.3);
+  box-shadow: 0 3px 10px rgba(0,201,177,0.35);
+}
+.car-dot:hover:not(.active) {
+  background: rgba(0,201,177,0.35);
+  transform: scale(1.2);
+}
+
+@media(max-width: 768px) {
+  .profile-card { flex: 0 0 270px; margin: 0 10px; }
+  .car-btn { width: 40px; height: 40px; font-size: 1.4rem; }
+}
+
+footer {
+  position: relative; z-index:1;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), white);
+  border-top: 3px solid rgba(79,142,247,0.15);
+  padding: 3rem 2rem 2rem;
+  backdrop-filter: blur(10px);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap:3rem; margin-bottom:2rem;
+}
+.footer-brand p { color:var(--text2); font-size:0.9rem; line-height:1.8; margin-top:0.75rem; }
+.footer-logo-big { font-family:'Kanit',sans-serif; font-weight:900; font-size:1.2rem;
+  background: linear-gradient(135deg,var(--teal),var(--blue));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.footer-col h4 { font-family:'Kanit',sans-serif; font-weight:700; color:var(--teal2); margin-bottom:1rem; }
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:0.5rem; }
+.footer-col ul li a { color:var(--text2); text-decoration:none; font-size:0.9rem; transition:color 0.2s; }
+.footer-col ul li a:hover { color:var(--teal); }
+.footer-bottom {
+  border-top: 2px solid rgba(79,142,247,0.1);
+  padding-top:1.5rem; text-align:center; color:var(--text2); font-size:0.85rem;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;
+}
+
+/* animations util */
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
+@keyframes fadeInUp   { from{opacity:0;transform:translateY(30px);}  to{opacity:1;transform:translateY(0);} }
+
+@media(max-width:768px){
+  .footer-inner{grid-template-columns:1fr;}
+  .tabs-wrapper{flex-direction:column;align-items:center;}
+  .tab-btn{min-width:280px;}
+  .wheel-container{width:320px;height:320px;}
+  .stage-node{width:62px;height:62px;}
+  .stage-node .node-icon{font-size:1.4rem;}
+  .n0{top:calc(50% - 31px - 120px);left:calc(50% - 31px);}
+  .n1{top:calc(50% - 31px - 85px);left:calc(50% - 31px + 85px);}
+  .n2{top:calc(50% - 31px);left:calc(50% - 31px + 120px);}
+  .n3{top:calc(50% - 31px + 85px);left:calc(50% - 31px + 85px);}
+  .n4{top:calc(50% - 31px + 120px);left:calc(50% - 31px);}
+  .n5{top:calc(50% - 31px + 85px);left:calc(50% - 31px - 85px);}
+  .n6{top:calc(50% - 31px);left:calc(50% - 31px - 120px);}
+  .n7{top:calc(50% - 31px - 85px);left:calc(50% - 31px - 85px);}
+  .wheel-center{width:90px;height:90px;}
+  .wheel-center-icon{font-size:2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-blobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
+<div class="floaters" id="floaters"></div>
+
+<!-- Mascot overlay -->
+<div class="mascot-overlay" id="mascotOverlay">
+  <div class="mascot-pop" id="mascotPop">
+    <div class="mascot-big" id="mascotBig">🎉</div>
+    <div class="mascot-speech" id="mascotSpeech">สวัสดีครับ!</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🪱</div>
+      <div class="nav-logo-text">
+        โรงเรียนอนุกูลนารี
+        <span>ทีม : lasn Survivor the Hidden Enemy</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">หน้าหลัก</a></li>
+      <li><a href="#edu">ให้ความรู้</a></li>
+      <li><a href="#risk">ประเมินความเสี่ยง</a></li>
+      <li><a href="#contact">ติดต่อ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="star-row">⭐🌟✨🌟⭐</div>
+  <h1 class="cartoon-title">เว็บความรู้<br>โรคพยาธิใบไม้ตับ</h1>
+  <span class="cartoon-title-sub">🔬 รู้จัก • ป้องกัน • ปลอดภัย 🛡️</span>
+  <p class="hero-desc">
+    เรียนรู้เรื่องโรคพยาธิใบไม้ตับอย่างสนุกสนาน! เข้าใจง่าย พร้อมเครื่องมือประเมินความเสี่ยง
+    เพื่อสุขภาพที่ดีของทุกคน 💪
+  </p>
+</div>
+
+<!-- TABS -->
+<div class="tab-section" id="edu">
+  <div class="tabs-wrapper">
+    <button class="tab-btn active" onclick="switchTab('education',this)"
+            data-emoji="📚" data-msg="มาเรียนรู้เรื่องโรคพยาธิกันเลย!">
+      <span class="tab-icon">📚</span>
+      <span>ความรู้เรื่องโรค</span>
+    </button>
+    <button class="tab-btn" id="riskTabBtn" onclick="switchTab('risk',this)"
+            data-emoji="🔍" data-msg="ประเมินความเสี่ยงของฉัน!">
+      <span class="tab-icon">🔍</span>
+      <span>ประเมินความเสี่ยง</span>
+    </button>
+  </div>
+
+  <!-- ===== TAB 1: EDUCATION ===== -->
+  <div class="tab-content active" id="tab-education">
+
+    <div class="info-band">
+      <div class="band-icon">⚠️</div>
+      <div>
+        <h3>โรคพยาธิใบไม้ตับคืออะไร?</h3>
+        <p>โรคพยาธิใบไม้ตับ (Opisthorchiasis) เกิดจากพยาธิ <em>Opisthorchis viverrini</em> พบมากในภาคอีสาน เป็นสาเหตุสำคัญของมะเร็งท่อน้ำดี — แต่ป้องกันได้ถ้ารู้ทัน!</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <span class="sec-heading">🦠 ข้อมูลสำคัญ — กดเพื่อเรียนรู้!</span>
+    </div>
+
+    <div class="accordion-grid" id="accordionGrid">
+
+      <div class="acc-card acc-c1" onclick="toggleAcc(this)">
+        <div class="acc-header">
+          <span class="acc-icon">🐟</span>
+          <span>การติดเชื้อ</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <p>พยาธิเข้าสู่ร่างกายเมื่อ<strong>กินปลาน้ำจืดดิบหรือปรุงไม่สุก</strong> เช่น ปลาสวาย ปลาตะเพียน ปลากระดี่ ปลานิล</p>
+          <ul class="acc-list">
+            <li>ก้อยปลาดิบ — อาหารเสี่ยงอันดับ 1</li>
+            <li>ปลาส้มดิบที่ยังไม่ผ่านความร้อน</li>
+            <li>ลาบปลาดิบ / ปลาร้าดิบ</li>
+            <li>ปลาปิ้งที่สุกไม่ทั่วถึง</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="acc-card acc-c2" onclick="toggleAcc(this)">
+        <div class="acc-header">
+          <span class="acc-icon">🤒</span>
+          <span>อาการของโรค</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <p>ระยะแรก<strong>มักไม่มีอาการ</strong> แต่เมื่อพยาธิสะสมมากขึ้นจะเริ่มปรากฏสัญญาณ:</p>
+          <ul class="acc-list">
+            <li>ปวดท้องบริเวณชายโครงขวา</li>
+            <li>คลื่นไส้ เบื่ออาหาร น้ำหนักลด</li>
+            <li>ตัวเหลือง ตาเหลือง (ดีซ่าน)</li>
+            <li>อ่อนเพลียเรื้อรัง ตับโต</li>
+            <li>อาจนำไปสู่มะเร็งท่อน้ำดี</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="acc-card acc-c3" onclick="toggleAcc(this)">
+        <div class="acc-header">
+          <span class="acc-icon">🔬</span>
+          <span>การวินิจฉัย</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <p>แพทย์จะใช้วิธีตรวจหลายแบบ:</p>
+          <ul class="acc-list">
+            <li>ตรวจอุจจาระหาไข่พยาธิ (วิธีมาตรฐาน)</li>
+            <li>ตรวจเลือดดูการทำงานของตับ</li>
+            <li>อัลตราซาวด์ช่องท้อง</li>
+            <li>เอกซเรย์คอมพิวเตอร์ (CT Scan)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="acc-card acc-c4" onclick="toggleAcc(this)">
+        <div class="acc-header">
+          <span class="acc-icon">💊</span>
+          <span>การรักษา</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <p>ยา <strong>Praziquantel</strong> รักษาได้ผลดีมากกว่า 90%!</p>
+          <ul class="acc-list">
+            <li>ขนาดยา 40 มก./กก. กินครั้งเดียว</li>
+            <li>ต้องอยู่ในการดูแลของแพทย์</li>
+            <li>ติดตามผลหลังรักษา 1-3 เดือน</li>
+            <li>รักษาเร็ว = ลดเสี่ยงมะเร็งได้มาก</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="acc-card acc-c5" onclick="toggleAcc(this)">
+        <div class="acc-header">
+          <span class="acc-icon">🛡️</span>
+          <span>การป้องกัน</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <p>ป้องกันได้ง่ายๆ แค่เปลี่ยนพฤติกรรมการกิน!</p>
+          <ul class="acc-list">
+            <li>🔥 ปรุงปลาให้สุกทั่วถึงทุกครั้ง</li>
+            <li>❌ หลีกเลี่ยงปลาดิบทุกชนิด</li>
+            <li>🚽 ไม่ถ่ายในแหล่งน้ำธรรมชาติ</li>
+            <li>🙌 ล้างมือก่อน-หลังปรุงอาหาร</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="acc-card acc-c6" onclick="toggleAcc(this)">
+        <div class="acc-header">
+          <span class="acc-icon">📍</span>
+          <span>พื้นที่เสี่ยงสูง</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <p>ภาคตะวันออกเฉียงเหนือมีอุบัติการณ์สูงที่สุด:</p>
+          <ul class="acc-list">
+            <li>ขอนแก่น, อุดรธานี, มหาสารคาม</li>
+            <li>กาฬสินธุ์, นครพนม, ร้อยเอ็ด</li>
+            <li>ชาวบ้านริมแม่น้ำชี-มูล เสี่ยงสูง</li>
+            <li>ประชากรกว่า 6 ล้านคนได้รับผลกระทบ</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CANCER SECTION -->
+    <div class="cancer-section">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <span class="sec-heading pink">&#9888;&#65039; มะเร็งท่อน้ำดี — ภัยเงียบจากพยาธิ</span>
+        <p style="color:var(--text2);font-size:0.95rem;margin-top:0.6rem;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.8;">
+          พยาธิใบไม้ตับที่อาศัยในท่อน้ำดีนานหลายปี จะกระตุ้นให้เกิดการอักเสบเรื้อรัง
+          จนนำไปสู่การเปลี่ยนแปลงของเซลล์ และมะเร็งท่อน้ำดีในที่สุด
+        </p>
+      </div>
+
+      <div class="cancer-link-box">
+        <div class="cancer-link-icon">&#128279;</div>
+        <div>
+          <h3>ความสัมพันธ์ระหว่างพยาธิใบไม้ตับ &#8594; มะเร็งท่อน้ำดี</h3>
+          <p>พยาธิหลั่งสารพิษกระตุ้นเซลล์ท่อน้ำดีให้แบ่งตัวผิดปกติ เกิดการอักเสบเรื้อรังนานหลายสิบปี จนกลายเป็นมะเร็ง — <strong>พยาธิใบไม้ตับจัดเป็นสารก่อมะเร็งกลุ่ม 1 โดย WHO</strong></p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-bottom:1.2rem;">
+        <span style="color:var(--text2);font-size:0.88rem;">&#128071; กดที่หัวข้อเพื่อเรียนรู้!</span>
+      </div>
+
+      <div class="accordion-grid">
+
+        <div class="acc-card acc-cancer-1" onclick="toggleAcc(this)">
+          <div class="acc-header">
+            <span class="acc-icon">&#129440;</span>
+            <span>กลไกการเกิดมะเร็ง</span>
+            <span class="acc-arrow">&#9660;</span>
+          </div>
+          <div class="acc-body">
+            <p>พยาธิกระตุ้นให้เซลล์ท่อน้ำดีแบ่งตัวผิดปกติอย่างช้าๆ:</p>
+            <ul class="acc-list">
+              <li>พยาธิหลั่ง secretory products กระตุ้นการอักเสบ</li>
+              <li>เกิด DNA damage สะสมในเซลล์ท่อน้ำดี</li>
+              <li>การอักเสบเรื้อรัง &#8594; fibrosis &#8594; dysplasia &#8594; มะเร็ง</li>
+              <li>กระบวนการนี้ใช้เวลา 10–30 ปีจึงแสดงอาการ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-card acc-cancer-2" onclick="toggleAcc(this)">
+          <div class="acc-header">
+            <span class="acc-icon">&#128202;</span>
+            <span>สถิติที่น่าตกใจในไทย</span>
+            <span class="acc-arrow">&#9660;</span>
+          </div>
+          <div class="acc-body">
+            <p>ประเทศไทยติดอันดับโลกในด้านนี้:</p>
+            <ul class="acc-list">
+              <li>ไทยมีอัตรามะเร็งท่อน้ำดี<strong>สูงที่สุดในโลก</strong></li>
+              <li>ภาคอีสาน: ชาย 85 ราย / หญิง 36 ราย ต่อ 100,000 คน/ปี</li>
+              <li>มีผู้เสียชีวิตกว่า 20,000 รายต่อปีในไทย</li>
+              <li>พบมะเร็งเมื่อระยะท้ายแล้วกว่า 70% ของผู้ป่วย</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-card acc-cancer-3" onclick="toggleAcc(this)">
+          <div class="acc-header">
+            <span class="acc-icon">&#128269;</span>
+            <span>อาการเตือนมะเร็งท่อน้ำดี</span>
+            <span class="acc-arrow">&#9660;</span>
+          </div>
+          <div class="acc-body">
+            <p>อาการเหล่านี้ต้องพบแพทย์ทันที:</p>
+            <ul class="acc-list">
+              <li>ตัวเหลือง ตาเหลือง (ดีซ่าน) โดยไม่ทราบสาเหตุ</li>
+              <li>ปัสสาวะสีเข้มเหมือนน้ำชา อุจจาระซีด</li>
+              <li>ปวดท้องบริเวณชายโครงขวา คลำพบก้อน</li>
+              <li>น้ำหนักลดอย่างรวดเร็วโดยไม่ได้ตั้งใจ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-card acc-cancer-4" onclick="toggleAcc(this)">
+          <div class="acc-header">
+            <span class="acc-icon">&#128137;</span>
+            <span>การรักษามะเร็งท่อน้ำดี</span>
+            <span class="acc-arrow">&#9660;</span>
+          </div>
+          <div class="acc-body">
+            <p>แนวทางการรักษาขึ้นอยู่กับระยะที่ตรวจพบ:</p>
+            <ul class="acc-list">
+              <li><strong>ผ่าตัด</strong> — หากพบในระยะแรก อัตรารอดชีพดีกว่า</li>
+              <li><strong>เคมีบำบัด</strong> — Gemcitabine + Cisplatin มาตรฐาน</li>
+              <li><strong>รังสีรักษา</strong> — ร่วมกับเคมีบำบัดในบางกรณี</li>
+              <li><strong>การรักษาแบบประคับประคอง</strong> — ลดความเจ็บปวด</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-card acc-cancer-5" onclick="toggleAcc(this)">
+          <div class="acc-header">
+            <span class="acc-icon">🛡️</span>
+            <span>ลดเสี่ยงมะเร็งด้วยการป้องกัน</span>
+            <span class="acc-arrow">&#9660;</span>
+          </div>
+          <div class="acc-body">
+            <p>ป้องกันได้ง่าย ๆ ด้วยพฤติกรรมที่ถูกต้อง:</p>
+            <ul class="acc-list">
+              <li>ไม่กินปลาน้ำจืดดิบหรือสุกๆดิบๆ เด็ดขาด</li>
+              <li>ตรวจอุจจาระหาพยาธิทุก 1–2 ปี</li>
+              <li>รักษาพยาธิทันทีเมื่อตรวจพบ ด้วยยา Praziquantel</li>
+              <li>อัลตราซาวด์ตับและท่อน้ำดีสำหรับกลุ่มเสี่ยงสูง</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-card acc-cancer-6" onclick="toggleAcc(this)">
+          <div class="acc-header">
+            <span class="acc-icon">&#9203;</span>
+            <span>ระยะของมะเร็งท่อน้ำดี</span>
+            <span class="acc-arrow">&#9660;</span>
+          </div>
+          <div class="acc-body">
+            <p>ยิ่งพบเร็วยิ่งรักษาได้ดี:</p>
+            <ul class="acc-list">
+              <li><strong>ระยะ 1:</strong> มะเร็งอยู่เฉพาะในท่อน้ำดี — ผ่าตัดหายได้</li>
+              <li><strong>ระยะ 2:</strong> ลุกลามเข้าตับหรือต่อมน้ำเหลืองใกล้เคียง</li>
+              <li><strong>ระยะ 3:</strong> ลุกลามเส้นเลือดหรืออวัยวะข้างเคียง</li>
+              <li><strong>ระยะ 4:</strong> แพร่กระจายไปอวัยวะอื่น — รักษายาก</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cancer-cta">
+        <span class="cta-icon">&#127939;</span>
+        <div>
+          <strong>จำไว้! การตรวจเร็ว = รักษาได้ = ชีวิตรอด</strong>
+          <p>มะเร็งท่อน้ำดีที่พบในระยะแรกมีอัตรารอดชีพ 5 ปี สูงกว่า 30% เทียบกับระยะท้ายที่น้อยกว่า 5% — อย่ารอให้มีอาการแล้วค่อยไปตรวจ!</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- LIFECYCLE WHEEL -->
+    <div class="lifecycle-section" id="lifeCycleSection">
+      <div style="text-align:center;margin-bottom:0.5rem;">
+        <span class="sec-heading yellow">🔄 วัฏจักรชีวิตพยาธิใบไม้ตับ</span>
+      </div>
+      <p style="color:var(--text2);font-size:0.95rem;margin-bottom:1rem;">
+        🖱️ เลื่อนเมาส์ไปที่แต่ละจุดเพื่อดูรายละเอียด! วงหมุนจะหยุดเมื่อคุณ hover
+      </p>
+
+      <div class="wheel-container">
+        <!-- SVG Ring with arrows -->
+        <svg class="wheel-svg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Dashed orbit ring -->
+          <circle cx="260" cy="260" r="185"
+            stroke="url(#ringGrad)" stroke-width="3" stroke-dasharray="14 6" opacity="0.5"/>
+          <!-- Arrow markers along ring -->
+          <defs>
+            <linearGradient id="ringGrad" x1="0" y1="0" x2="520" y2="520" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#38d9ff"/>
+              <stop offset="50%" stop-color="#00c9b1"/>
+              <stop offset="100%" stop-color="#4f8ef7"/>
+            </linearGradient>
+          </defs>
+          <!-- 8 arc arrows between nodes -->
+          <!-- Arrow 0→1 -->
+          <path d="M260 75 A185 185 0 0 1 390 130" stroke="#38d9ff" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 1→2 -->
+          <path d="M390 130 A185 185 0 0 1 445 260" stroke="#00c9b1" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 2→3 -->
+          <path d="M445 260 A185 185 0 0 1 390 390" stroke="#4f8ef7" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 3→4 -->
+          <path d="M390 390 A185 185 0 0 1 260 445" stroke="#a78bfa" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 4→5 -->
+          <path d="M260 445 A185 185 0 0 1 130 390" stroke="#ff6bab" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 5→6 -->
+          <path d="M130 390 A185 185 0 0 1 75 260" stroke="#ff9f43" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 6→7 -->
+          <path d="M75 260 A185 185 0 0 1 130 130" stroke="#ffd93d" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+          <!-- Arrow 7→0 -->
+          <path d="M130 130 A185 185 0 0 1 260 75" stroke="#6bcb77" stroke-width="3" fill="none" marker-end="url(#arr)" opacity="0.7"/>
+
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#00c9b1"/>
+            </marker>
+          </defs>
+        </svg>
+
+        <!-- Center -->
+        <div class="wheel-center">
+          <div class="wheel-center-icon">🔄</div>
+          <div class="wheel-center-text">วัฏจักร<br>พยาธิ</div>
+        </div>
+
+        <!-- Stage nodes -->
+        <div class="stage-node n0" style="">
+          <span class="node-icon">🥚</span>
+          <span class="node-name">ไข่พยาธิ</span>
+          <div class="stage-tooltip">ไข่ออกมากับอุจจาระสู่แหล่งน้ำ</div>
+        </div>
+        <div class="stage-node n1">
+          <span class="node-icon">💧</span>
+          <span class="node-name">แหล่งน้ำ</span>
+          <div class="stage-tooltip">ไข่ฟักในน้ำเป็น Miracidium</div>
+        </div>
+        <div class="stage-node n2">
+          <span class="node-icon">🐌</span>
+          <span class="node-name">หอยโขง</span>
+          <div class="stage-tooltip">โฮสต์กลางที่ 1 — ตัวอ่อนเติบโตในหอย</div>
+        </div>
+        <div class="stage-node n3">
+          <span class="node-icon">🦠</span>
+          <span class="node-name">เซอร์คาเรีย</span>
+          <div class="stage-tooltip">ตัวอ่อนออกจากหอยว่ายน้ำหาปลา</div>
+        </div>
+        <div class="stage-node n4">
+          <span class="node-icon">🐟</span>
+          <span class="node-name">ปลาน้ำจืด</span>
+          <div class="stage-tooltip">โฮสต์กลางที่ 2 — metacercaria ฝังในเนื้อปลา</div>
+        </div>
+        <div class="stage-node n5">
+          <span class="node-icon">🍽️</span>
+          <span class="node-name">กินปลาดิบ</span>
+          <div class="stage-tooltip">มนุษย์รับพยาธิจากการกินปลาสุกๆดิบๆ</div>
+        </div>
+        <div class="stage-node n6">
+          <span class="node-icon">🫀</span>
+          <span class="node-name">ท่อน้ำดี/ตับ</span>
+          <div class="stage-tooltip">พยาธิตัวเต็มวัยอาศัยในท่อน้ำดี ก่อโรค</div>
+        </div>
+        <div class="stage-node n7">
+          <span class="node-icon">💩</span>
+          <span class="node-name">อุจจาระ</span>
+          <div class="stage-tooltip">ไข่พยาธิออกกับอุจจาระ วนกลับสู่แหล่งน้ำ</div>
+        </div>
+      </div>
+
+      <p class="wheel-hint">🌀 วงหมุนไม่หยุด — เหมือนวงจรที่ต้องทำลาย ด้วยการ <strong>ไม่กินปลาดิบ!</strong></p>
+    </div>
+
+  </div>
+
+  <!-- ===== TAB 2: RISK ASSESSMENT ===== -->
+  <div class="tab-content" id="tab-risk">
+    <div class="quiz-container" id="riskSectionAnchor">
+
+      <!-- Header -->
+      <div style="text-align:center;margin-bottom:0.5rem;">
+        <span class="sec-heading pink">🎯 ประเมินความเสี่ยงของฉัน!</span>
+      </div>
+      <p style="text-align:center;color:var(--text2);font-size:0.95rem;margin-bottom:1.8rem;">
+        ตอบทุกข้อให้ครบ แล้วกด <strong>"ดูผลการประเมิน"</strong> ด้านล่างได้เลย 😊
+      </p>
+
+      <!-- All questions visible, scroll down -->
+      <div id="questionsArea">
+
+        <div class="sq-item" id="sq1">
+          <div class="sq-header">
+            <span class="q-num-badge">1</span>
+            <span class="sq-emoji">🐟</span>
+            <span class="sq-text">เคยรับประทานปลาน้ำจืดดิบหรือกึ่งสุกกึ่งดิบ?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="1" data-value="1"><input type="radio" name="sq1" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="1" data-value="0"><input type="radio" name="sq1" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq2">
+          <div class="sq-header">
+            <span class="q-num-badge">2</span>
+            <span class="sq-emoji">🥗</span>
+            <span class="sq-text">รับประทานก้อยปลา ลาบปลา หรือปลาส้มดิบเป็นประจำ?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="2" data-value="1"><input type="radio" name="sq2" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="2" data-value="0"><input type="radio" name="sq2" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq3">
+          <div class="sq-header">
+            <span class="q-num-badge">3</span>
+            <span class="sq-emoji">👨‍🍳</span>
+            <span class="sq-text">เคยชิมปลาดิบระหว่างปรุงอาหาร?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="3" data-value="1"><input type="radio" name="sq3" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="3" data-value="0"><input type="radio" name="sq3" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq4">
+          <div class="sq-header">
+            <span class="q-num-badge">4</span>
+            <span class="sq-emoji">🗺️</span>
+            <span class="sq-text">อาศัยหรือเคยอาศัยในภาคตะวันออกเฉียงเหนือหรือพื้นที่ลุ่มน้ำโขง?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="4" data-value="1"><input type="radio" name="sq4" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="4" data-value="0"><input type="radio" name="sq4" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq5">
+          <div class="sq-header">
+            <span class="q-num-badge">5</span>
+            <span class="sq-emoji">👨‍👩‍👧‍👦</span>
+            <span class="sq-text">มีสมาชิกในครอบครัวที่กินปลาดิบเป็นประจำ?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="5" data-value="1"><input type="radio" name="sq5" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="5" data-value="0"><input type="radio" name="sq5" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq6">
+          <div class="sq-header">
+            <span class="q-num-badge">6</span>
+            <span class="sq-emoji">🔬</span>
+            <span class="sq-text">เคยตรวจพบพยาธิใบไม้ตับมาก่อน?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="6" data-value="1"><input type="radio" name="sq6" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="6" data-value="0"><input type="radio" name="sq6" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq7">
+          <div class="sq-header">
+            <span class="q-num-badge">7</span>
+            <span class="sq-emoji">🤕</span>
+            <span class="sq-text">มีอาการแน่นท้องหรือปวดชายโครงขวาเรื้อรัง?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="7" data-value="1"><input type="radio" name="sq7" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="7" data-value="0"><input type="radio" name="sq7" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq8">
+          <div class="sq-header">
+            <span class="q-num-badge">8</span>
+            <span class="sq-emoji">😮</span>
+            <span class="sq-text">มีอาการท้องอืดหรืออาหารไม่ย่อยเรื้อรังโดยไม่ทราบสาเหตุ?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="8" data-value="1"><input type="radio" name="sq8" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="8" data-value="0"><input type="radio" name="sq8" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+        <div class="sq-item" id="sq9">
+          <div class="sq-header">
+            <span class="q-num-badge">9</span>
+            <span class="sq-emoji">🏥</span>
+            <span class="sq-text">ไม่เคยตรวจอุจจาระคัดกรองพยาธิในช่วง 5 ปีที่ผ่านมา?</span>
+          </div>
+          <div class="sq-opts">
+            <label class="sq-opt" data-q="9" data-value="1"><input type="radio" name="sq9" value="1"> ✅ ใช่</label>
+            <label class="sq-opt" data-q="9" data-value="0"><input type="radio" name="sq9" value="0"> 🙅 ไม่ใช่</label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Progress counter -->
+      <div class="sq-counter" id="sqCounter">ตอบแล้ว <span id="sqDone">0</span> / 9 ข้อ</div>
+
+      <!-- Submit button -->
+      <button class="assess-submit-btn" id="assessSubmitBtn" onclick="calcScrollQuiz()" disabled>
+        🎯 ดูผลการประเมิน
+      </button>
+
+      <!-- Result panel -->
+      <div class="result-panel" id="resultPanel">
+        <div class="result-mascot" id="resMascot">🎉</div>
+        <span class="result-level-text" id="resLevel">ผลการประเมิน</span>
+        <div class="result-bar-wrap">
+          <div class="result-bar" id="resBar"></div>
+        </div>
+        <div class="result-desc" id="resDesc"></div>
+        <button class="retry-btn" onclick="restartQuiz()">🔄 ทำแบบประเมินใหม่</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== TEAM SECTION ===== -->
+<div class="team-section" id="team">
+  <div class="team-inner">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <span class="cartoon-title" style="font-size:clamp(1.6rem,4vw,2.8rem);">💻ทีมผู้จัดทำ🪄</span>
+      <p style="color:var(--text2);margin-top:0.8rem;font-size:1rem;">   ขอบคุณทุกคนที่ร่วมกันสร้างเว็บนี้ &#128153;</p>
+      <p>นักเรียนโรงเรียนอนุกูลนารี</p>
+    </div>
+
+    <!-- CAROUSEL WRAPPER -->
+    <div class="carousel-wrapper">
+      <button class="car-btn car-prev" onclick="moveCarousel(-1)" aria-label="previous">&#8249;</button>
+      <div class="carousel-track-outer">
+        <div class="carousel-track" id="carTrack">
+
+          <!-- Card 1 -->
+          <div class="profile-card" data-index="0">
+            <div class="pc-photo-wrap">
+              <div class="pc-photo-placeholder">
+                <span class="pc-photo-icon">👩‍💻</span>
+              </div>
+              <div class="pc-badge">01</div>
+            </div>
+            <div class="pc-body">
+              <h3 class="pc-name">นางสาวณัฐธิดา ต้นตระกูลทรัพย์</h3>
+              <div class="pc-tag">🔓 ออกแบบอัลกอริทึม</div>
+              <div class="pc-school">
+                <span>&#127979;</span>
+                <span>โรงเรียนอนุกูลนารี</span>
+              </div>
+              <div class="pc-contacts">
+                <a href="#" class="pc-btn pc-blue">&#128241; ติดต่อ 0982373819 </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="profile-card" data-index="1">
+            <div class="pc-photo-wrap">
+              <div class="pc-photo-placeholder">
+                <span class="pc-photo-icon">👩‍💻</span>
+              </div>
+              <div class="pc-badge">02</div>
+            </div>
+            <div class="pc-body">
+              <h3 class="pc-name">นางสาวปวริศา คำภักดี</h3>
+              <div class="pc-tag">🎯 พัฒนาเว็บไซต์</div>
+              <div class="pc-school">
+                <span>&#127979;</span>
+                <span>โรงเรียนอนุกูลนารี</span>
+              </div>
+              <div class="pc-contacts">
+                <a href="#" class="pc-btn pc-blue">&#128241; ติดต่อ 0985903269</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="profile-card" data-index="2">
+            <div class="pc-photo-wrap">
+              <div class="pc-photo-placeholder">
+                <span class="pc-photo-icon">👩‍💻</span>
+              </div>
+              <div class="pc-badge">03</div>
+            </div>
+            <div class="pc-body">
+              <h3 class="pc-name">นางสาวกัลยวรรธน์ คงสมมาตย์</h3>
+              <div class="pc-tag">🔍 สืบค้นข้อมูลเชิงลึก</div>
+              <div class="pc-school">
+                <span>&#127979;</span>
+                <span>โรงเรียนอนุกูลนารี</span>
+              </div>
+              <div class="pc-contacts">
+                <a href="#" class="pc-btn pc-blue">&#128241; ติดต่อ 0633133487</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /carousel-track -->
+      </div>
+      <button class="car-btn car-next" onclick="moveCarousel(1)" aria-label="next">&#8250;</button>
+    </div>
+
+    <!-- Pagination dots -->
+    <div class="car-dots" id="carDots">
+      <span class="car-dot active" onclick="goToCard(0)"></span>
+      <span class="car-dot" onclick="goToCard(1)"></span>
+      <span class="car-dot" onclick="goToCard(2)"></span>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-big">🪱 เว็บความรู้โรคพยาธิใบไม้ตับ</div>
+      <p>แหล่งข้อมูลสุขภาพสำหรับประชาชน เนื้อหาอ้างอิงจากข้อมูลทางการแพทย์ที่เชื่อถือได้ ไม่ใช่คำแนะนำทางการแพทย์แทนการพบแพทย์</p>
+    </div>
+    <div class="footer-col">
+      <h4>เนื้อหา</h4>
+      <ul>
+        <li><a href="https://www.si.mahidol.ac.th/th/healthdetail.asp?aid=779">โรคพยาธิใบไม้ตับ</a></li>
+        <li><a href="https://wormboss.com.au/about-worms/worm-life-cycles-and-life-stages/fluke-life-cycle/">วัฏจักรพยาธิ</a></li>
+        <li><a href="https://www.si.mahidol.ac.th/th/healthdetail.asp?aid=779">การป้องกัน</a></li>
+        <li><a href="https://www.si.mahidol.ac.th/th/healthdetail.asp?aid=779">การรักษา</a></li>
+        <li><a href="#">ประเมินความเสี่ยง</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ติดต่อและช่วยเหลือ</h4>
+      <ul>
+        <li><a href="https://ddc.moph.go.th/">กรมควบคุมโรค</a></li>
+        <li><a href="https://datariskcom-ddc.moph.go.th/download/%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B8%94%E0%B9%88%E0%B8%A7%E0%B8%99-1422-%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%84%E0%B8%A7%E0%B8%9A%E0%B8%84%E0%B8%B8%E0%B8%A1%E0%B9%82%E0%B8%A3%E0%B8%84-%E0%B8%9B%E0%B8%A3/">สายด่วนสุขภาพ 1422</a></li>
+        <li><a href="https://www.google.com/maps/search/โรงพยาบาลใกล้ฉัน">โรงพยาบาลใกล้บ้าน</a></li>
+        <li><a href="https://www.instagram.com/pawarisa__wan/">👩‍💻แจ้งข้อมูลผิดพลาด👩‍💻</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2569 เว็บการให้ความรู้เรื่องโรคพยาธิใบไม้ตับ — เพื่อสุขภาพที่ดีของคนไทย 💚</span>
+    <span>ข้อมูลเพื่อการศึกษา ไม่ใช่คำแนะนำแทนแพทย์</span>
+  </div>
+</footer>
+
+<script>
+// ===== FLOATERS =====
+const floaterEmojis = ['🐟','🐌','🦠','💊','🔬','⭐','💧','🌿','🫁','💚','🌀','🎯'];
+const floaterDiv = document.getElementById('floaters');
+floaterEmojis.forEach((e,i)=>{
+  const el = document.createElement('div');
+  el.className='floater'; el.textContent=e;
+  el.style.left = (5 + (i / floaterEmojis.length) * 90) + 'vw';
+  el.style.animationDuration = (15+Math.random()*15)+'s';
+  el.style.animationDelay = (Math.random()*20)+'s';
+  el.style.fontSize = (1.2+Math.random()*1.2)+'rem';
+  floaterDiv.appendChild(el);
+});
+
+// ===== MASCOT =====
+let mascotTimer;
+function showMascot(emoji, msg) {
+  clearTimeout(mascotTimer);
+  document.getElementById('mascotBig').textContent = emoji;
+  document.getElementById('mascotSpeech').textContent = msg;
+  document.getElementById('mascotPop').classList.add('show');
+  mascotTimer = setTimeout(()=>document.getElementById('mascotPop').classList.remove('show'), 1800);
+}
+
+// ===== TABS =====
+function switchTab(name, btn) {
+  const emoji = btn.getAttribute('data-emoji');
+  const msg = btn.getAttribute('data-msg');
+  showMascot(emoji, msg);
+  setTimeout(()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+name).classList.add('active');
+  }, 450);
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('mouseenter',()=>{
+    if(!btn.classList.contains('active'))
+      showMascot(btn.getAttribute('data-emoji'), '👆 คลิกเพื่อดู!');
+  });
+});
+
+// ===== ACCORDION =====
+function toggleAcc(card) {
+  const wasOpen = card.classList.contains('open');
+  // close all
+  document.querySelectorAll('.acc-card').forEach(c=>c.classList.remove('open'));
+  // open this one if it wasn't open
+  if(!wasOpen) {
+    card.classList.add('open');
+    const icon = card.querySelector('.acc-icon');
+    // particle burst
+    burstParticles(card);
+  }
+}
+
+function burstParticles(card) {
+  const rect = card.getBoundingClientRect();
+  for(let i=0;i<8;i++){
+    const p = document.createElement('div');
+    const colors = ['#38d9ff','#ffd93d','#ff6bab','#6bcb77','#a78bfa','#ff9f43'];
+    p.style.cssText = `
+      position:fixed; z-index:500; pointer-events:none; border-radius:50%;
+      width:10px; height:10px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${rect.left+rect.width/2}px; top:${rect.top+rect.height/2}px;
+      transition: all 0.7s ease;
+    `;
+    document.body.appendChild(p);
+    setTimeout(()=>{
+      const angle = (i/8)*Math.PI*2;
+      const dist = 60+Math.random()*60;
+      p.style.transform = `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) scale(0)`;
+      p.style.opacity = '0';
+    }, 10);
+    setTimeout(()=>p.remove(), 750);
+  }
+}
+
+// ===== SCROLL QUIZ =====
+const sqAnswers = {};
+const SQ_TOTAL = 9;
+
+function updateSqCounter() {
+  const done = Object.keys(sqAnswers).length;
+  document.getElementById('sqDone').textContent = done;
+  const btn = document.getElementById('assessSubmitBtn');
+  if(done >= SQ_TOTAL) {
+    btn.disabled = false;
+    btn.textContent = '🎯 ดูผลการประเมิน';
+    showMascot('🎉','ตอบครบแล้ว! กดดูผลได้เลย!');
+  } else {
+    btn.disabled = true;
+    btn.textContent = `🎯 ดูผลการประเมิน (ตอบอีก ${SQ_TOTAL - done} ข้อ)`;
+  }
+}
+
+document.querySelectorAll('.sq-opt').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const qNum = this.getAttribute('data-q');
+    const val = parseInt(this.getAttribute('data-value'));
+    // deselect siblings
+    const item = this.closest('.sq-item');
+    item.querySelectorAll('.sq-opt').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+    this.querySelector('input').checked = true;
+    sqAnswers[qNum] = val;
+    item.classList.add('answered');
+    updateSqCounter();
+  });
+});
+
+function calcScrollQuiz() {
+  const done = Object.keys(sqAnswers).length;
+  if(done < SQ_TOTAL) return;
+
+  const yesCount = Object.values(sqAnswers).reduce((s,v) => s + v, 0);
+
+  document.getElementById('questionsArea').style.display = 'none';
+  document.getElementById('sqCounter').style.display = 'none';
+  document.getElementById('assessSubmitBtn').style.display = 'none';
+
+  const panel = document.getElementById('resultPanel');
+  panel.classList.add('show');
+
+  let level, pct;
+  if(yesCount <= 2) {
+    level = 'low'; pct = 22;
+    document.getElementById('resLevel').textContent = 'ความเสี่ยงต่ำ ✅';
+    document.getElementById('resLevel').className = 'result-level-text low';
+    document.getElementById('resMascot').textContent = '🎉😊';
+    document.getElementById('resDesc').textContent =
+      `คุณตอบ "ใช่" ${yesCount} จาก 9 ข้อ — ความเสี่ยงต่ำ 💚 ดีมากเลย! ยังคงควรรับประทานปลาสุกทุกครั้ง และตรวจสุขภาพประจำปีเพื่อความมั่นใจนะครับ`;
+    showMascot('🎉', 'ความเสี่ยงต่ำ ยอดเยี่ยม!');
+  } else if(yesCount <= 5) {
+    level = 'medium'; pct = 56;
+    document.getElementById('resLevel').textContent = 'ความเสี่ยงปานกลาง ⚠️';
+    document.getElementById('resLevel').className = 'result-level-text medium';
+    document.getElementById('resMascot').textContent = '⚠️😐';
+    document.getElementById('resDesc').textContent =
+      `คุณตอบ "ใช่" ${yesCount} จาก 9 ข้อ — ความเสี่ยงปานกลาง ⚠️ ควรตรวจคัดกรองเบื้องต้น เช่น ตรวจอุจจาระหาพยาธิ หลีกเลี่ยงปลาดิบ และพบแพทย์เพื่อปรึกษา`;
+    showMascot('⚠️', 'ควรตรวจคัดกรองนะครับ!');
+  } else {
+    level = 'high'; pct = 90;
+    document.getElementById('resLevel').textContent = 'ความเสี่ยงสูง 🔴';
+    document.getElementById('resLevel').className = 'result-level-text high';
+    document.getElementById('resMascot').textContent = '🚨😟';
+    document.getElementById('resDesc').textContent =
+      `คุณตอบ "ใช่" ${yesCount} จาก 9 ข้อ — ความเสี่ยงสูง 🔴 ควรรีบพบแพทย์โดยด่วน เพื่อตรวจอุจจาระ ตรวจเลือด และอัลตราซาวด์ตับ การรักษาเร็วด้วยยา Praziquantel ได้ผลดีมาก!`;
+    showMascot('🚨', 'ควรพบแพทย์ด่วน!');
+  }
+
+  document.getElementById('resBar').className = 'result-bar ' + level;
+  setTimeout(() => { document.getElementById('resBar').style.width = pct + '%'; }, 200);
+  panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function restartQuiz() {
+  // clear answers
+  Object.keys(sqAnswers).forEach(k => delete sqAnswers[k]);
+  // reset UI
+  document.querySelectorAll('.sq-opt').forEach(o => {
+    o.classList.remove('selected');
+    o.querySelector('input').checked = false;
+  });
+  document.querySelectorAll('.sq-item').forEach(i => i.classList.remove('answered'));
+  document.getElementById('questionsArea').style.display = '';
+  document.getElementById('sqCounter').style.display = '';
+  document.getElementById('assessSubmitBtn').style.display = '';
+  document.getElementById('assessSubmitBtn').disabled = true;
+  document.getElementById('assessSubmitBtn').textContent = `🎯 ดูผลการประเมิน (ตอบอีก ${SQ_TOTAL} ข้อ)`;
+  document.getElementById('sqDone').textContent = '0';
+  document.getElementById('resultPanel').classList.remove('show');
+  document.getElementById('riskSectionAnchor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+// ===== CAROUSEL =====
+let carIndex = 0;
+const carCards = document.querySelectorAll('.profile-card');
+const carTotal = carCards.length;
+
+function updateCarousel() {
+  const track = document.getElementById('carTrack');
+  const cardWidth = 320 + 36; // flex basis + 2*margin
+  const outerWidth = document.querySelector('.carousel-track-outer')?.offsetWidth || 500;
+  const offset = (outerWidth / 2) - (cardWidth / 2) - (carIndex * cardWidth);
+  track.style.transform = `translateX(${offset}px)`;
+
+  carCards.forEach((c, i) => {
+    c.classList.toggle('active', i === carIndex);
+  });
+
+  document.querySelectorAll('.car-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === carIndex);
+  });
+}
+
+function moveCarousel(dir) {
+  carIndex = (carIndex + dir + carTotal) % carTotal;
+  updateCarousel();
+}
+
+function goToCard(idx) {
+  carIndex = idx;
+  updateCarousel();
+}
+
+// click on side cards to focus
+carCards.forEach((card, i) => {
+  card.addEventListener('click', () => goToCard(i));
+});
+
+// init on load + resize
+window.addEventListener('load', updateCarousel);
+window.addEventListener('resize', updateCarousel);
+
+// touch swipe for mobile
+let touchStartX = 0;
+const carOuter = document.querySelector('.carousel-track-outer');
+if (carOuter) {
+  carOuter.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  carOuter.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
+  });
+}
+
+// ===== WHEEL hover pause =====
+const wheelSvg = document.querySelector('.wheel-svg');
+const wheelContainer = document.querySelector('.wheel-container');
+if(wheelContainer){
+  wheelContainer.addEventListener('mouseenter',()=>wheelSvg.style.animationPlayState='paused');
+  wheelContainer.addEventListener('mouseleave',()=>wheelSvg.style.animationPlayState='running');
+}
+</script>
+</body>
+</html>
